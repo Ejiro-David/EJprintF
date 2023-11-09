@@ -15,12 +15,12 @@ int print_f(const char *format, ...)
         }
         else
         {
-
-            while (*format)
+            while (*++format)
             {
-                if (*format == 'c')
+                if (*format == 'd')
                 {
-                    int ch = va_arg(args, int);
+                    //something here causes a bus error
+                    char ch = va_arg(args, int);
                     putchar(ch);
                     count++;
                 }
@@ -40,10 +40,11 @@ int print_f(const char *format, ...)
                     count++;
                 }
             }
-            format++;
         }
-        va_end(args);
+        format++;
+ 
     }
+    va_end(args);
     return count;
 }
 
