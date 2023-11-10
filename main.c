@@ -24,6 +24,8 @@ int print_f(const char *format, ...)
                     putchar(ch);
                     count++;
                 }
+
+                
                 else if (*format == 's')
                 {
                     char *str = va_arg(args, char *);
