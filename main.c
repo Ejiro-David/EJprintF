@@ -30,8 +30,9 @@ int print_f(const char *format, ...)
                     while (*str)
                     {
                         putchar(*str);
-                        str++;
                         count++;
+                        str++;
+                        
                     }
                 }
                 else
