@@ -20,10 +20,11 @@ int print_f(const char *format, ...)
                 if (*format == 'd')
                 {
                     int value = va_arg(args, int);
-                    char buffer[18];
+                    char buffer[12];
                     int len = sprintf(buffer, "%d", value);
                     write(1, buffer, len);
                     count += len;
+                    break;
                 }
                 else if (*format == 's')
                 {
@@ -31,11 +32,13 @@ int print_f(const char *format, ...)
                     int len = strlen(str);
                     write(1, str, len);
                     count+=len;
+                    break;
                 }
                 else
                 {
                     write(1, format, 1);
                     count++;
+                    break;
                 }
             }
         }
