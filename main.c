@@ -10,7 +10,7 @@ int print_f(const char *format, ...)
     {
         if (*format != '%')
         {
-            putchar(*format);
+            write(1, format, 1);
             count++;
         }
         else
@@ -19,31 +19,27 @@ int print_f(const char *format, ...)
             {
                 if (*format == 'd')
                 {
-                    //something here causes a bus error
-                    char ch = va_arg(args, int);
-                    putchar(ch);
-                    count++;
+                    int value = va_arg(args, int);
+                    char buffer[18];
+                    int len = sprintf(buffer, "%d", value);
+                    write(1, buffer, len);
+                    count += len;
                 }
                 else if (*format == 's')
                 {
                     char *str = va_arg(args, char *);
-                    while (*str)
-                    {
-                        putchar(*str);
-                        count++;
-                        str++;
-                        
-                    }
+                    int len = strlen(str);
+                    write(1, str, len);
+                    count+=len;
                 }
                 else
                 {
-                    putchar(*format);
+                    write(1, format, 1);
                     count++;
                 }
             }
         }
         format++;
- 
     }
     va_end(args);
     return count;
