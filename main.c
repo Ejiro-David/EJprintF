@@ -4,7 +4,7 @@ int print_f(const char *format, ...)
 {
     va_list args;
     va_start(args, format);
-
+    int len;
     int count = 0;
     while (*format != '\0')
     {
@@ -19,19 +19,14 @@ int print_f(const char *format, ...)
             {
                 if (*format == 'd')
                 {
-                    int value = va_arg(args, int);
                     char buffer[12];
-                    int len = sprintf(buffer, "%d", value);
-                    write(1, buffer, len);
-                    count += len;
+                    count += format_d(buffer, args);
                     break;
                 }
                 else if (*format == 's')
                 {
-                    char *str = va_arg(args, char *);
-                    int len = strlen(str);
-                    write(1, str, len);
-                    count+=len;
+                    char str;
+                    count += format_s(str, args);
                     break;
                 }
                 else
@@ -44,6 +39,7 @@ int print_f(const char *format, ...)
         }
         format++;
     }
+    // write(1, buffer, len);
     va_end(args);
     return count;
 }
