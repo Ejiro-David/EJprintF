@@ -25,7 +25,7 @@ int print_f(const char *format, ...)
                 }
                 else if (*format == 's')
                 {
-                    char str;
+                    char *str;
                     count += format_s(str, args);
                     break;
                 }
