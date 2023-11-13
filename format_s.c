@@ -1,5 +1,5 @@
 #include "main.h"
-//check how you handle pointers
+//check how you handle pointers, int dey return address
 int format_s(char *str, va_list args)
 {
     str = va_arg(args, char *);
