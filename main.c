@@ -21,7 +21,7 @@ int print_f(const char *format, ...)
                 {
                     char buffer[12];
                     count += format_d(buffer, args);
-                    break;
+                    // break;
                 }
                 else if (*format == 's')
                 {
@@ -39,7 +39,7 @@ int print_f(const char *format, ...)
         }
         format++;
     }
-    // write(1, buffer, len);
+
     va_end(args);
     return count;
 }
@@ -47,5 +47,5 @@ int print_f(const char *format, ...)
 int main(void)
 {
     int age = 25;
-    print_f("My name is %s and I am %d years old.\n %%", "Snehasish", age);
+    print_f("My name is %d and I am %s years old.\n %%", age, "Snehasish");
 }
