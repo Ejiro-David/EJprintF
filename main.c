@@ -15,18 +15,19 @@ int print_f(const char *format, ...)
         }
         else
         {
-            while (*++format)
+            format++;
+            while (*format)
             {
                 if (*format == 'd')
                 {
                     char buffer[12];
                     count += format_d(buffer, args);
-                    // break;
+                    break;
                 }
                 else if (*format == 's')
                 {
-                    char *str;
-                    count += format_s(str, args);
+                    char buffer[256];
+                    count += format_s(buffer, args);
                     break;
                 }
                 else
