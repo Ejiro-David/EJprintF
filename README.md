@@ -5,7 +5,7 @@
 %c: Used to print characters
 %x or %X: Used to print hexadecimal numbers
 %p: Used to print pointers
-%%: Used to print the % character
+%%: Used to print the % character -- done 
 
 
 Test for main funct
