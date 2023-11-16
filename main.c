@@ -5,8 +5,8 @@ int print_f(const char *format, ...)
     va_list args;
     va_start(args, format);
     int len;
-    int count = 0;
-    while (*format != '\0')
+    int count = -1;
+    while (*format)
     {
         if (*format != '%')
         {
@@ -18,7 +18,7 @@ int print_f(const char *format, ...)
             format++;
             while (*format)
             {
-                if (*format == 'd')
+                if (*format == 'd' || *format == 'i')
                 {
                     char buffer[12];
                     count += format_d(buffer, args);
@@ -26,8 +26,13 @@ int print_f(const char *format, ...)
                 }
                 else if (*format == 's')
                 {
-                    char buffer[256];
-                    count += format_s(buffer, args);
+                    count += format_s(args);
+                    break;
+                }
+                else if (*format == 'f')
+                {
+                    char buffer[12];
+                    count += format_d(buffer, args);
                     break;
                 }
                 else
@@ -42,11 +47,12 @@ int print_f(const char *format, ...)
     }
 
     va_end(args);
-    return count;
+    return count + 1;
 }
 
 int main(void)
 {
     int age = 25;
-    print_f("My name is %d and I am %s years old.\n %%", age, "Snehasish");
+    print_f("%s %d", "l", 34);
+    // print_f("My name is %d and I am %s.\n", age, "Snehasish");
 }

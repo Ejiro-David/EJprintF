@@ -27,3 +27,6 @@ double pi = 3.14;
     print_f("| Name | Age | Occupation |\n");
     print_f("| Snehasish | 25 | AI Engineer |\n");
     print_f("| Alice | 30 | Software Engineer |\n");
+
+
+
