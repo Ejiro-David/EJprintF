@@ -35,6 +35,7 @@ int print_f(const char *format, ...)
                     count += format_d(buffer, args);
                     break;
                 }
+                
                 else
                 {
                     write(1, format, 1);
