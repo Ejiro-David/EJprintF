@@ -1,6 +1,6 @@
 #include "main.h"
 
-int print_f(char *format, ...)
+int print_f(const char *format, ...)
 {
     va_list args;
     int count = 0;
@@ -29,7 +29,7 @@ int print_f(char *format, ...)
             {
                 int ch = va_arg(args, int);
                 buffer[buff_ind++] = ch;
-                if (buff_ind = BUFF_SIZE)
+                if (buff_ind == BUFF_SIZE)
                 {
                     print_buffer(buffer, &buff_ind);
                     count += buff_ind;
@@ -75,4 +75,16 @@ int print_f(char *format, ...)
 
     va_end(args);
     return count;
+}
+
+int main() {
+    int num = 123;
+    char character = 'A';
+    char string[] = "Hello, World!";
+
+    print_f("Printing an integer: %d\n", num);
+    print_f("Printing a character: %c\n", character);
+    print_f("Printing a string: %s\n", string);
+
+    return 0;
 }
