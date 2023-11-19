@@ -24,6 +24,7 @@ int print_f(const char *format, ...)
                     print_buffer(buffer, &buff_ind);
                     count += buff_ind;
                 }
+                
             }
             else if (*format == 'c')
             {
