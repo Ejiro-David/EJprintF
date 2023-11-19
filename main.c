@@ -28,13 +28,15 @@ int print_f(const char *format, ...)
             }
             else if (*format == 'c')
             {
-                int ch = va_arg(args, int);
-                buffer[buff_ind++] = ch;
-                if (buff_ind == BUFF_SIZE)
-                {
-                    print_buffer(buffer, &buff_ind);
-                    count += buff_ind;
-                }
+                count += format_c(buffer, buff_ind, args);
+
+                // int ch = va_arg(args, int);
+                // buffer[buff_ind++] = ch;
+                // if (buff_ind == BUFF_SIZE)
+                // {
+                //     print_buffer(buffer, &buff_ind);
+                //     count += buff_ind;
+                // }
             }
             else if (*format == 's')
             {
