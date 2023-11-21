@@ -28,15 +28,9 @@ int print_f(const char *format, ...)
             }
             else if (*format == 'c')
             {
+                //format_c must return an int.
                 count += format_c(buffer, buff_ind, args);
-
-                // int ch = va_arg(args, int);
-                // buffer[buff_ind++] = ch;
-                // if (buff_ind == BUFF_SIZE)
-                // {
-                //     print_buffer(buffer, &buff_ind);
-                //     count += buff_ind;
-                // }
+                
             }
             else if (*format == 's')
             {
@@ -88,6 +82,11 @@ int main() {
     print_f("Printing an integer: %d\n", num);
     print_f("Printing a character: %c\n", "character");
     print_f("Printing a string: %s\n", string);
-
+ print_f("Printing an integer: %d\n", num);
+    print_f("Printing a character: %c\n", "character");
+    print_f("Printing a string: %s\n", string);
+     print_f("Printing an integer: %d\n", num);
+    print_f("Printing a character: %c\n", character);
+    print_f("Printing a string: %s\n", string);
     return 0;
 }
