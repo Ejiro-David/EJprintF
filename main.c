@@ -86,7 +86,7 @@ int main() {
     char string[] = "Hello, World!";
 
     print_f("Printing an integer: %d\n", num);
-    print_f("Printing a character: %c\n", character);
+    print_f("Printing a character: %c\n", "character");
     print_f("Printing a string: %s\n", string);
 
     return 0;
