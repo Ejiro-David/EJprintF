@@ -30,7 +30,7 @@ int print_f(const char *format, ...)
             {
                 //format_c must return an int.
                 count += format_c(buffer, buff_ind, args);
-                
+                //funtions takes buffer arr, current ind of buffer and list of args
             }
             else if (*format == 's')
             {

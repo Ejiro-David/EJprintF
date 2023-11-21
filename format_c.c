@@ -2,7 +2,8 @@
 
 int format_c(char buffer[], int buff_ind, va_list args)
 {
-    int ch = va_arg(args, int);
+    //try init args list on main.c
+    int ch = va_arg(args, int); // continue line by line analysis
     buffer[buff_ind++] = ch;
     int len;
     //code compiles but without printing char when tested
