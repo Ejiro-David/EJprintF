@@ -90,3 +90,33 @@ int main(void)
     print_f("%s %d", "l", 34);
     // print_f("My name is %d and I am %s.\n", age, "Snehasish");
 }
+
+ // if (*format == '%')
+            // {
+            // }
+            // else if (*format == 'c')
+            // {
+            //     // format_c must return an int.
+            //     count += format_c(buffer, buff_ind, args);
+            //     // funtions takes buffer arr, current ind of buffer and list of args
+            // }
+            // else if (*format == 's')
+            // {
+            //     char *str = va_arg(args, char *);
+            //     while (*str)
+            //     {
+            //         buffer[buff_ind++] = *str;
+            //         str++;
+            //         if (buff_ind == BUFF_SIZE)
+            //         {
+            //             print_buffer(buffer, &buff_ind);
+            //             count += buff_ind;
+            //         }
+            //     }
+            // }
+            // else if (*format == 'd' || *format == 'i')
+            // {
+            //     int value = va_arg(args, int);
+            //     printed = print_integer(value);
+            //     count += printed;
+            // }

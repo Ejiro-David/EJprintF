@@ -5,8 +5,6 @@ int print_f(const char *format, ...)
     va_list args;
     int count = 0;
     int printed = 0;
-    int buff_ind = 0;
-    char buffer[BUFF_SIZE];
 
     va_start(args, format);
 
@@ -14,79 +12,38 @@ int print_f(const char *format, ...)
     {
         if (*format == '%')
         {
-            format++;
-
-            if (*format == '%')
+            ++format;
+            if (*format == 'c')
             {
-                buffer[buff_ind++] = '%';
-                if (buff_ind == BUFF_SIZE)
-                {
-                    print_buffer(buffer, &buff_ind);
-                    count += buff_ind;
-                }
-                
-            }
-            else if (*format == 'c')
-            {
-                //format_c must return an int.
-                count += format_c(buffer, buff_ind, args);
-                //funtions takes buffer arr, current ind of buffer and list of args
+                int ch = va_arg(args, int);
+                return write(1, &ch, 1);
+                count++;
             }
             else if (*format == 's')
             {
-                char *str = va_arg(args, char *);
-                while (*str)
-                {
-                    buffer[buff_ind++] = *str;
-                    str++;
-                    if (buff_ind == BUFF_SIZE)
-                    {
-                        print_buffer(buffer, &buff_ind);
-                        count += buff_ind;
-                    }
-                }
-            }
-            else if (*format == 'd' || *format == 'i')
-            {
-                int value = va_arg(args, int);
-                printed = print_integer(value);
-                count += printed;
+                
             }
         }
-
         else
         {
-            buffer[buff_ind++] = *format;
-            if (buff_ind == BUFF_SIZE)
-            {
-                print_buffer(buffer, &buff_ind);
-                count += buff_ind;
-            }
+            count += write(1, format, 1); 
         }
-
-        format++;
+        ++format;
     }
-
-    print_buffer(buffer, &buff_ind);
-    count += buff_ind;
 
     va_end(args);
     return count;
 }
 
-int main() {
+int main()
+{
     int num = 123;
     char character = 'A';
     char string[] = "Hello, World!";
 
-    print_f("Printing an integer: %d\n", num);
-    print_f("Printing a character: %c\n", "character");
-    print_f("Printing a string: %s\n", string);
- print_f("Printing an integer: %d\n", num);
-    print_f("Printing a character: %c\n", "character");
-    print_f("Printing a string: %s\n", string);
-     print_f("Printing an integer: %d\n", num);
+    // print_f("Printing an integer: %d\n", num);
     print_f("Printing a character: %c\n", character);
-    print_f("Printing a string: %s\n", string);
+    // print_f("Printing a string: %s\n", string);
+
     return 0;
 }
